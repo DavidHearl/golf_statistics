@@ -7,6 +7,18 @@ from .models import Data
 def home(request):
     shot_data = Data.objects.all()
 
+    clubs = list(set([data.club for data in shot_data]))
+
+    def custom_sort(club):
+        if club == 'D':
+            return (0, club)
+        elif 'W' in club:
+            return (1, club)
+        else:
+            return (2, club)
+    
+    clubs.sort(key=custom_sort)
+
     # File upload logic
     if request.method == 'POST':
         form = UploadCSVForm(request.POST, request.FILES)
@@ -44,7 +56,8 @@ def home(request):
 
     context = {
         'form': form,
-        'shot_data': shot_data
+        'shot_data': shot_data,
+        'clubs': clubs
     }
         
     return render(request, 'home.html', context)

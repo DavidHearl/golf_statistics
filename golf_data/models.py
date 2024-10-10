@@ -25,4 +25,4 @@ class Data(models.Model):
     target = models.CharField(max_length=5, null=True, blank=True)
 
     def __str__(self):
-        return self.source_name
+        return self.club + ' - ' + str(self.carry_distance_range) + ' - ' + str(self.total_distance_range)
