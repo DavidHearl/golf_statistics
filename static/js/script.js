@@ -235,18 +235,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const p55Index = Math.floor(values.length * 0.55);
         const p45Value = values[p45Index];
         const p55Value = values[p55Index];
-        const p45Variance = p45Value - average;
-        const p55Variance = p55Value - average;
-    
-        document.getElementById('average-value').textContent = `Average: ${average.toFixed(2)}`;
-        document.getElementById('variance').textContent = `Variance:  -${p45Variance.toFixed(2)}, +${p55Variance.toFixed(2)}`;
-        document.getElementById('average-range').textContent = `Range: ${rangeMin.toFixed(2)} - ${rangeMax.toFixed(2)}`;
-        document.getElementById('bottom-1').textContent = `Minimum: ${min.toFixed(2)}`;
-        document.getElementById('top-1').textContent = `Maximum: ${max.toFixed(2)}`;
-        document.getElementById('top-10-value').textContent = `Top 10% Average: ${top10Average.toFixed(2)}`;
-        document.getElementById('top-25-value').textContent = `Top 25% Average: ${top25Average.toFixed(2)}`;
-        document.getElementById('top-50-value').textContent = `Top 50% Average: ${top50Average.toFixed(2)}`;
-        document.getElementById('top-75-value').textContent = `Top 75% Average: ${top75Average.toFixed(2)}`;
+
+        // Adjusted variance calculation
+        const variance = (rangeMax - rangeMin) / 2;
+
+        document.getElementById('average-value').textContent = `${average.toFixed(2)} ± ${variance.toFixed(2)}`;
+        document.getElementById('average-range').textContent = `${rangeMin.toFixed(2)} - ${rangeMax.toFixed(2)}`;
+        document.getElementById('bottom-1').textContent = `${min.toFixed(2)}`;
+        document.getElementById('top-1').textContent = `${max.toFixed(2)}`;
+        document.getElementById('top-10-value').textContent = `${top10Average.toFixed(2)}`;
+        document.getElementById('top-25-value').textContent = `${top25Average.toFixed(2)}`;
+        document.getElementById('top-50-value').textContent = `${top50Average.toFixed(2)}`;
+        document.getElementById('top-75-value').textContent = `${top75Average.toFixed(2)}`;
     }
 
     buttons.forEach(button => {
