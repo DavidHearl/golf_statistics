@@ -1,7 +1,7 @@
 from django.db import models
 
 class Data(models.Model):
-    source_name = models.CharField(max_length=100)
+    source_name = models.CharField(max_length=100, null=True, blank=True)
     shot_number = models.IntegerField()
     club = models.CharField(max_length=5)
     strokes_gained = models.FloatField(null=True, blank=True)
