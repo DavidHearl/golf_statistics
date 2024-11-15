@@ -24,7 +24,8 @@ p {
 .header {
     display: flex;
     justify-content: space-between;
-    margin: 8px 12px;
+    padding: 8px 12px;
+    border-bottom: 1px solid;
 }
 
 .table-configurations {
